@@ -14,9 +14,9 @@ pay2mApi.defaults.headers.common[
 export class Pay2mService {
   constructor() {} // private readonly subscriptionPlanModel: Model<SubscriptionPlanModel> // @Inject(SUBSCRIPTION_PLAN_MODEL_PROVIDER) // private readonly customerCardService: CustomerCardService, // @Inject(forwardRef(() => CustomerCardService))
 
-  public async createCustomer(user: UserCreatePayload) {
+  public async createCustomer(id: string, user: UserCreatePayload) {
     try {
-      const { data } = pay2mApi.post<any>("/customers", {
+      const response = await pay2mApi.post<any>("/customers", {
         name: user.name,
         email: user.email,
         phone: user.phone,
@@ -24,10 +24,10 @@ export class Pay2mService {
           number: user.documentNumber,
           type: "cpf",
         },
-        externalRef: user.id,
+        externalRef: id,
       });
 
-      return data.id;
+      return response.data;
     } catch (error) {
       throw error;
     }
@@ -35,7 +35,7 @@ export class Pay2mService {
 
   public async createRecipient(user: any) {
     try {
-      const { data } = pay2mApi.post<any>("/recipients", {
+      const response = await pay2mApi.post<any>("/recipients", {
         legalName: user.name,
         document: {
           number: user.documentNumber,
@@ -58,7 +58,7 @@ export class Pay2mService {
         },
       });
 
-      return data.id;
+      return response.data;
     } catch (error) {
       throw error;
     }
@@ -72,11 +72,11 @@ export class Pay2mService {
       name: string;
       price: number;
       quantity: number;
-      id: string;
+      productId: string;
     };
   }) {
     try {
-      const { data } = pay2mApi.post<any>("/transactions", {
+      const response = await pay2mApi.post<any>("/transactions", {
         customer: {
           id: payment.customerId,
         },
@@ -91,7 +91,7 @@ export class Pay2mService {
             title: payment.product.name,
             unitPrice: payment.product.price,
             quantity: payment.product.quantity,
-            externalRef: payment.product.id,
+            externalRef: payment.product.productId,
           },
         ],
         postbackUrl: "12121",
@@ -106,7 +106,7 @@ export class Pay2mService {
         }),
       });
 
-      return data;
+      return response.data;
     } catch (error) {
       throw error;
     }

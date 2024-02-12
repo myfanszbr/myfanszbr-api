@@ -1,0 +1,36 @@
+import { Types } from 'mongoose';
+import { FileModel } from '../models';
+export declare class FileDto {
+    _id?: Types.ObjectId;
+    type?: string;
+    name?: string;
+    description?: string;
+    mimeType?: string;
+    server?: string;
+    path?: string;
+    absolutePath?: string;
+    width?: number;
+    height?: number;
+    duration?: number;
+    size?: number;
+    status?: string;
+    encoding?: string;
+    thumbnails?: Record<string, any>[];
+    refItems: any;
+    acl?: string;
+    metadata?: any;
+    createdBy?: Types.ObjectId;
+    updatedBy?: Types.ObjectId;
+    createdAt?: Date;
+    updatedAt?: Date;
+    constructor(init?: Partial<FileDto>);
+    static fromModel(file: FileModel): FileDto;
+    getPublicPath(): string;
+    getUrl(authenticated?: boolean): string;
+    getThumbnails(): string[];
+    static getPublicUrl(filePath: string): string;
+    isVideo(): boolean;
+    isImage(): boolean;
+    isAudio(): boolean;
+    toResponse(): this;
+}

@@ -1,0 +1,31 @@
+import { Model, Types } from 'mongoose';
+import { QueueEventService, QueueEvent } from 'src/kernel';
+import { FileDto } from 'src/modules/file';
+import { FileService } from 'src/modules/file/services';
+import { PerformerService } from 'src/modules/performer/services';
+import { SubscriptionService } from 'src/modules/subscription/services/subscription.service';
+import { TokenTransactionService } from 'src/modules/token-transaction/services';
+import { UserDto } from 'src/modules/user/dtos';
+import { PhotoDto } from '../dtos';
+import { PhotoCreatePayload, PhotoUpdatePayload } from '../payloads';
+import { GalleryService } from './gallery.service';
+import { PhotoModel } from '../models';
+export declare const PERFORMER_PHOTO_CHANNEL = "PERFORMER_PHOTO_CHANNEL";
+export declare class PhotoService {
+    private readonly performerService;
+    private readonly galleryService;
+    private readonly subscriptionService;
+    private readonly tokenTransactionService;
+    private readonly photoModel;
+    private readonly queueEventService;
+    private readonly fileService;
+    constructor(performerService: PerformerService, galleryService: GalleryService, subscriptionService: SubscriptionService, tokenTransactionService: TokenTransactionService, photoModel: Model<PhotoModel>, queueEventService: QueueEventService, fileService: FileService);
+    handleFileProcessed(event: QueueEvent): Promise<void>;
+    create(file: FileDto, payload: PhotoCreatePayload, creator?: UserDto): Promise<PhotoDto>;
+    updateInfo(id: string, payload: PhotoUpdatePayload, updater?: UserDto): Promise<PhotoDto>;
+    setCoverGallery(id: string, updater: UserDto): Promise<PhotoDto>;
+    details(id: string, jwToken: string, user: UserDto): Promise<PhotoDto>;
+    delete(id: string | Types.ObjectId): Promise<boolean>;
+    deleteByGallery(galleryId: string | Types.ObjectId): Promise<boolean>;
+    checkAuth(req: any, user: UserDto): Promise<boolean>;
+}

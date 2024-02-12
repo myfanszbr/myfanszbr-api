@@ -198,7 +198,7 @@ export class UserService {
     }
     const savedUser = await this.userModel.create(user);
 
-    post
+    
 
     return savedUser;
   }

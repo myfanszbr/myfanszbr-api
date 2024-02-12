@@ -1,0 +1,1 @@
+{"version":3,"file":"email-verification.payload.js","sourceRoot":"","sources":["../../../../src/modules/auth/payloads/email-verification.payload.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,6CAA8C;AAC9C,qDAAmE;AAEnE,MAAa,wBAAwB;CASpC;AANC;IAFC,IAAA,qBAAW,GAAE;IACb,IAAA,4BAAU,GAAE;;wDACD;AAKZ;IAHC,IAAA,qBAAW,GAAE;IACb,IAAA,0BAAQ,GAAE;IACV,IAAA,4BAAU,GAAE;;4DACM;AARrB,4DASC"}

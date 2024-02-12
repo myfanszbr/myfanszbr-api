@@ -1,5 +1,5 @@
-import { Document } from 'mongoose';
-import { Types } from 'mongoose';
+import { Document } from "mongoose";
+import { Types } from "mongoose";
 
 export class PaymentProductModel {
   name: string;

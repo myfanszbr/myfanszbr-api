@@ -1,0 +1,1 @@
+{"version":3,"file":"poll.dto.js","sourceRoot":"","sources":["../../../../src/modules/feed/dtos/poll.dto.ts"],"names":[],"mappings":";;;AACA,mCAA8B;AAE9B,MAAa,OAAO;IAelB,YAAY,IAAuB;QACjC,MAAM,CAAC,MAAM,CACX,IAAI,EACJ,IAAA,aAAI,EAAC,IAAI,EAAE;YACT,KAAK;YACL,WAAW;YACX,WAAW;YACX,aAAa;YACb,WAAW;YACX,WAAW;YACX,WAAW;SACZ,CAAC,CACH,CAAC;IACJ,CAAC;CACF;AA7BD,0BA6BC"}

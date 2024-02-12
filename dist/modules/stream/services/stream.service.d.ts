@@ -1,0 +1,120 @@
+import { PerformerService } from 'src/modules/performer/services';
+import { Model, Types } from 'mongoose';
+import { PageableData } from 'src/kernel';
+import { ConversationService } from 'src/modules/message/services';
+import { SubscriptionService } from 'src/modules/subscription/services/subscription.service';
+import { PerformerDto } from 'src/modules/performer/dtos';
+import { UserService } from 'src/modules/user/services';
+import { UserDto } from 'src/modules/user/dtos';
+import { TokenTransactionService } from 'src/modules/token-transaction/services';
+import { SocketUserService } from '../../socket/services/socket-user.service';
+import { StreamModel } from '../models';
+import { SearchStreamPayload, SetDurationPayload, StartStreamPayload, UpdateStreamPayload } from '../payloads';
+import { StreamDto } from '../dtos';
+export declare class StreamService {
+    private readonly performerService;
+    private readonly userService;
+    private readonly subscriptionService;
+    private readonly streamModel;
+    private readonly conversationService;
+    private readonly socketUserService;
+    private readonly tokenTransactionService;
+    constructor(performerService: PerformerService, userService: UserService, subscriptionService: SubscriptionService, streamModel: Model<StreamModel>, conversationService: ConversationService, socketUserService: SocketUserService, tokenTransactionService: TokenTransactionService);
+    findOne(query: any): Promise<StreamModel>;
+    findByIds(ids: string[] | Types.ObjectId[]): Promise<StreamModel[]>;
+    adminSearch(req: SearchStreamPayload): Promise<PageableData<StreamDto>>;
+    userSearch(req: SearchStreamPayload, user: UserDto): Promise<PageableData<StreamDto>>;
+    endSessionStream(streamId: string | Types.ObjectId): Promise<any>;
+    findByPerformerId(performerId: string | Types.ObjectId, payload?: Partial<StreamDto>): Promise<StreamModel>;
+    goLive(payload: StartStreamPayload, performer: PerformerDto): Promise<StreamDto>;
+    editLive(id: any, payload: UpdateStreamPayload): Promise<{
+        _id: Types.ObjectId;
+        title: string;
+        description: string;
+        isStreaming: number;
+        isFree: boolean;
+        price: number;
+        performerId: Types.ObjectId;
+        performerInfo: any;
+        type: string;
+        sessionId: string;
+        stats: {
+            members: number;
+            likes: number;
+        };
+        createdAt: Date;
+        updatedAt: Date;
+        isSubscribed: boolean;
+        conversationId: Types.ObjectId;
+        hasPurchased: boolean;
+    } | {
+        streamingTime: number;
+        lastStreamingTime: Date;
+        _id: Types.ObjectId;
+        title: string;
+        description: string;
+        isStreaming: number;
+        isFree: boolean;
+        price: number;
+        performerId: Types.ObjectId;
+        performerInfo: any;
+        type: string;
+        sessionId: string;
+        stats: {
+            members: number;
+            likes: number;
+        };
+        createdAt: Date;
+        updatedAt: Date;
+        isSubscribed: boolean;
+        conversationId: Types.ObjectId;
+        hasPurchased: boolean;
+    }>;
+    joinPublicChat(performerId: string, user: UserDto): Promise<{
+        _id: Types.ObjectId;
+        title: string;
+        description: string;
+        isStreaming: number;
+        isFree: boolean;
+        price: number;
+        performerId: Types.ObjectId;
+        performerInfo: any;
+        type: string;
+        sessionId: string;
+        stats: {
+            members: number;
+            likes: number;
+        };
+        createdAt: Date;
+        updatedAt: Date;
+        isSubscribed: boolean;
+        conversationId: Types.ObjectId;
+        hasPurchased: boolean;
+    } | {
+        streamingTime: number;
+        lastStreamingTime: Date;
+        _id: Types.ObjectId;
+        title: string;
+        description: string;
+        isStreaming: number;
+        isFree: boolean;
+        price: number;
+        performerId: Types.ObjectId;
+        performerInfo: any;
+        type: string;
+        sessionId: string;
+        stats: {
+            members: number;
+            likes: number;
+        };
+        createdAt: Date;
+        updatedAt: Date;
+        isSubscribed: boolean;
+        conversationId: Types.ObjectId;
+        hasPurchased: boolean;
+    }>;
+    getRoomName(id: string | Types.ObjectId, roomType: string): string;
+    updateStreamDuration(payload: SetDurationPayload, performer: PerformerDto): Promise<{
+        updated: boolean;
+    }>;
+}

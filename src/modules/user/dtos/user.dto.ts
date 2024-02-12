@@ -1,6 +1,6 @@
-import { Types } from 'mongoose';
-import { pick } from 'lodash';
-import { FileDto } from 'src/modules/file';
+import { Types } from "mongoose";
+import { pick } from "lodash";
+import { FileDto } from "src/modules/file";
 
 export class UserDto {
   _id: Types.ObjectId;
@@ -15,7 +15,7 @@ export class UserDto {
 
   phone: string;
 
-  roles: string[] = ['user'];
+  roles: string[] = ["user"];
 
   avatarId: Types.ObjectId;
 
@@ -25,9 +25,8 @@ export class UserDto {
   };
 
   pay2m: {
-    customerId?:number;
-    recipientId?:number;
-  }
+    customerId: number;
+  };
 
   avatarPath: string;
 
@@ -56,39 +55,40 @@ export class UserDto {
   updatedAt: Date;
 
   constructor(data: Partial<any>) {
-    data && Object.assign(
-      this,
-      pick(data, [
-        '_id',
-        'name',
-        'firstName',
-        'lastName',
-        'email',
-        'phone',
-        'roles',
-        'avatarId',
-        'avatarPath',
-        'status',
-        'username',
-        'gender',
-        'balance',
-        'country',
-        'verifiedEmail',
-        'isOnline',
-        'stats',
-        'pay2m',
-        'twitterConnected',
-        'googleConnected',
-        'isPerformer',
-        'createdAt',
-        'updatedAt'
-      ])
-    );
+    data &&
+      Object.assign(
+        this,
+        pick(data, [
+          "_id",
+          "name",
+          "firstName",
+          "lastName",
+          "email",
+          "phone",
+          "roles",
+          "avatarId",
+          "avatarPath",
+          "status",
+          "username",
+          "gender",
+          "balance",
+          "country",
+          "verifiedEmail",
+          "isOnline",
+          "stats",
+          "pay2m",
+          "twitterConnected",
+          "googleConnected",
+          "isPerformer",
+          "createdAt",
+          "updatedAt",
+        ])
+      );
   }
 
   getName() {
     if (this.name) return this.name;
-    return [this.firstName || '', this.lastName || ''].join(' ');
+    return [this.firstName || "", this.lastName || ""].join(" ");
   }
 
   toResponse(includePrivateInfo = false, isAdmin = false) {
@@ -102,7 +102,7 @@ export class UserDto {
       isPerformer: false,
       country: this.country,
       createdAt: this.createdAt,
-      updatedAt: this.updatedAt
+      updatedAt: this.updatedAt,
     } as any;
 
     const privateInfo = {
@@ -116,13 +116,13 @@ export class UserDto {
       gender: this.gender,
       balance: this.balance,
       roles: this.roles,
-      verifiedEmail: this.verifiedEmail
+      verifiedEmail: this.verifiedEmail,
     } as any;
 
     if (isAdmin) {
       return {
         ...publicInfo,
-        ...privateInfo
+        ...privateInfo,
       };
     }
 
@@ -132,7 +132,7 @@ export class UserDto {
 
     return {
       ...publicInfo,
-      ...privateInfo
+      ...privateInfo,
     };
   }
 }

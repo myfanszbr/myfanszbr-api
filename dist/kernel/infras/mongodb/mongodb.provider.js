@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.mongoDBProviders = exports.MONGO_DB_PROVIDER = void 0;
+const mongoose = require("mongoose");
+exports.MONGO_DB_PROVIDER = 'MONGO_DB_PROVIDER';
+exports.mongoDBProviders = [
+    {
+        provide: exports.MONGO_DB_PROVIDER,
+        useFactory: () => mongoose.connect(process.env.MONGO_URI, {})
+    }
+];
+//# sourceMappingURL=mongodb.provider.js.map

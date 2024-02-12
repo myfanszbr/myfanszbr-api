@@ -1,4 +1,4 @@
-import { Document, Types } from 'mongoose';
+import { Document, Types } from "mongoose";
 
 export class PerformerModel extends Document {
   _id: Types.ObjectId;
@@ -90,6 +90,10 @@ export class PerformerModel extends Document {
     totalFeeds: number;
     totalStreamTime: number;
     followers: number;
+  };
+
+  pay2m: {
+    recipientId: number;
   };
 
   // score custom from other info like likes, subscribes, views....

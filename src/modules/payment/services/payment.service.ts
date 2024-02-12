@@ -194,22 +194,22 @@ export class PaymentService {
     );
 
     if (paymentGateway === "pay2m") {
-      const plan = await this.stripeService.createSubscriptionPlan(
-        transaction,
-        performer,
-        user,
-        cardId
-      );
-      if (plan) {
+      const payment = await this.pay2mService.createPayment({
+        amount: transaction.totalPrice,
+        customerId: user.pay2m.customerId,
+        recipientId: performer.pay2m.recipientId,
+        product: transaction.products[0] as any,
+      });
+      if (payment) {
         transaction.status =
           transaction.type === PAYMENT_TYPE.FREE_SUBSCRIPTION
             ? PAYMENT_STATUS.SUCCESS
             : PAYMENT_STATUS.CREATED;
-        transaction.paymentResponseInfo = plan;
-        transaction.invoiceId = plan.latest_invoice as any;
+        transaction.paymentResponseInfo = payment;
+        transaction.invoiceId = payment.id;
         await this.subscriptionService.updateSubscriptionId(
           new PaymentDto(transaction),
-          plan.id
+          payment.id
         );
       }
       // if (transaction.type === PAYMENT_TYPE.FREE_SUBSCRIPTION) {
@@ -371,7 +371,6 @@ export class PaymentService {
         name: "Wallet",
         description: `Top up Wallet $${amount}`,
         productId: null,
-        id: `${Date.now()}`,
         productType: PAYMENT_TARGET_TYPE.TOKEN_PACKAGE,
         performerId: null,
         tokens: amount,
@@ -395,14 +394,14 @@ export class PaymentService {
       const paymentData = await this.pay2mService.createPayment({
         customerId: user.pay2m!.customerId,
         amount: totalPrice,
-        product: products[0],
+        product: products[0] as any,
       });
 
       transaction.invoiceId = paymentData.id;
       transaction.paymentResponseInfo = paymentData;
       await transaction.save();
 
-      return transaction.url;
+      return new PaymentDto(transaction).toResponse();
     }
 
     if (paymentGateway === "ccbill") {

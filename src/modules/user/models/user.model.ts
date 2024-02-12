@@ -1,5 +1,5 @@
-import { Document } from 'mongoose';
-import { Types } from 'mongoose';
+import { Document } from "mongoose";
+import { Types } from "mongoose";
 
 export class UserModel extends Document {
   name: string;
@@ -53,10 +53,9 @@ export class UserModel extends Document {
   stats: {
     totalSubscriptions: number;
     following: number;
-  }
+  };
 
   pay2m: {
-    customerId?:number;
-    recipientId?:number;
-  }
+    customerId: number;
+  };
 }

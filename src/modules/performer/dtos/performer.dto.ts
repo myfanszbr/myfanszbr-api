@@ -1,6 +1,6 @@
-import { Types } from 'mongoose';
-import { pick } from 'lodash';
-import { FileDto } from 'src/modules/file';
+import { Types } from "mongoose";
+import { pick } from "lodash";
+import { FileDto } from "src/modules/file";
 
 export class PerformerDto {
   _id: Types.ObjectId;
@@ -108,6 +108,10 @@ export class PerformerDto {
     totalStreamTime: number;
   };
 
+  pay2m: {
+    recipientId: number;
+  };
+
   score: number;
 
   bankingInformation?: any;
@@ -156,75 +160,76 @@ export class PerformerDto {
     Object.assign(
       this,
       pick(data, [
-        '_id',
-        'name',
-        'firstName',
-        'lastName',
-        'username',
-        'email',
-        'phone',
-        'phoneCode',
-        'status',
-        'avatarId',
-        'avatarPath',
-        'coverId',
-        'coverPath',
-        'idVerificationId',
-        'idVerification',
-        'documentVerificationId',
-        'idVerification',
-        'documentVerification',
-        'gender',
-        'country',
-        'city',
-        'state',
-        'zipcode',
-        'address',
-        'languages',
-        'categoryIds',
-        'height',
-        'weight',
-        'bio',
-        'eyes',
-        'hair',
-        'butt',
-        'ethnicity',
-        'sexualOrientation',
-        'isFreeSubscription',
-        'durationFreeSubscriptionDays',
-        'monthlyPrice',
-        'yearlyPrice',
-        'publicChatPrice',
-        'stats',
-        'score',
-        'bankingInformation',
-        'ccbillSetting',
-        'paypalSetting',
-        'commissionSetting',
-        'blockCountries',
-        'createdAt',
-        'updatedAt',
-        'verifiedEmail',
-        'verifiedAccount',
-        'verifiedDocument',
-        'twitterConnected',
-        'googleConnected',
-        'isOnline',
-        'welcomeVideoId',
-        'welcomeVideoPath',
-        'welcomeVideoName',
-        'activateWelcomeVideo',
-        'isBookMarked',
-        'isSubscribed',
-        'lastStreamingTime',
-        'live',
-        'streamingStatus',
-        'dateOfBirth',
-        'bodyType',
-        'balance',
-        'isFollowed',
-        'commissionPercentage',
-        'isFeatured'
+        "_id",
+        "name",
+        "firstName",
+        "lastName",
+        "username",
+        "email",
+        "phone",
+        "phoneCode",
+        "status",
+        "avatarId",
+        "avatarPath",
+        "coverId",
+        "coverPath",
+        "idVerificationId",
+        "idVerification",
+        "documentVerificationId",
+        "idVerification",
+        "documentVerification",
+        "gender",
+        "country",
+        "city",
+        "state",
+        "zipcode",
+        "address",
+        "languages",
+        "categoryIds",
+        "height",
+        "weight",
+        "bio",
+        "eyes",
+        "hair",
+        "butt",
+        "ethnicity",
+        "sexualOrientation",
+        "isFreeSubscription",
+        "durationFreeSubscriptionDays",
+        "monthlyPrice",
+        "yearlyPrice",
+        "publicChatPrice",
+        "stats",
+        "score",
+        "bankingInformation",
+        "ccbillSetting",
+        "paypalSetting",
+        "commissionSetting",
+        "blockCountries",
+        "createdAt",
+        "updatedAt",
+        "verifiedEmail",
+        "verifiedAccount",
+        "verifiedDocument",
+        "twitterConnected",
+        "googleConnected",
+        "isOnline",
+        "welcomeVideoId",
+        "welcomeVideoPath",
+        "welcomeVideoName",
+        "activateWelcomeVideo",
+        "isBookMarked",
+        "isSubscribed",
+        "lastStreamingTime",
+        "live",
+        "streamingStatus",
+        "dateOfBirth",
+        "bodyType",
+        "balance",
+        "isFollowed",
+        "commissionPercentage",
+        "isFeatured",
+        "pay2m",
       ])
     );
   }
@@ -265,7 +270,7 @@ export class PerformerDto {
       sexualOrientation: this.sexualOrientation,
       isPerformer: true,
       isFollowed: this.isFollowed,
-      isFeatured: this.isFeatured
+      isFeatured: this.isFeatured,
     };
     const privateInfo = {
       firstName: this.firstName,
@@ -294,7 +299,7 @@ export class PerformerDto {
       welcomeVideoId: this.welcomeVideoId,
       paypalSetting: this.paypalSetting,
       createdAt: this.createdAt,
-      updatedAt: this.updatedAt
+      updatedAt: this.updatedAt,
     };
 
     if (isAdmin) {
@@ -302,7 +307,7 @@ export class PerformerDto {
         ...publicInfo,
         ...privateInfo,
         ccbillSetting: this.ccbillSetting,
-        commissionPercentage: this.commissionPercentage
+        commissionPercentage: this.commissionPercentage,
       };
     }
 
@@ -312,13 +317,13 @@ export class PerformerDto {
 
     return {
       ...publicInfo,
-      ...privateInfo
+      ...privateInfo,
     } as any;
   }
 
   getName() {
     if (this.name) return this.name;
-    return [this.firstName || '', this.lastName || ''].join(' ');
+    return [this.firstName || "", this.lastName || ""].join(" ");
   }
 
   toSearchResponse() {
@@ -340,7 +345,7 @@ export class PerformerDto {
       streamingStatus: this.streamingStatus,
       isFollowed: this.isFollowed,
       dateOfBirth: this.dateOfBirth,
-      isFeatured: this.isFeatured
+      isFeatured: this.isFeatured,
     } as any;
   }
 
@@ -394,7 +399,7 @@ export class PerformerDto {
       bodyType: this.bodyType,
       isPerformer: true,
       isFollowed: this.isFollowed,
-      isFeatured: this.isFeatured
+      isFeatured: this.isFeatured,
     } as any;
   }
 }

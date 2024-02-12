@@ -1,0 +1,212 @@
+import * as mongoose from 'mongoose';
+import { Types } from 'mongoose';
+export declare const userSchema: mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, {
+    updatedAt: Date;
+    createdAt: Date;
+    verifiedEmail: boolean;
+    roles: string[];
+    status: string;
+    balance: number;
+    isOnline: number;
+    googleConnected: boolean;
+    twitterConnected: boolean;
+    name?: string;
+    email?: string;
+    firstName?: string;
+    lastName?: string;
+    avatarId?: {
+        prototype?: Types.ObjectId;
+        cacheHexString?: unknown;
+        generate?: {};
+        createFromTime?: {};
+        createFromHexString?: {};
+        createFromBase64?: {};
+        isValid?: {};
+    };
+    avatarPath?: string;
+    username?: string;
+    phone?: string;
+    gender?: string;
+    country?: string;
+    onlineAt?: Date;
+    offlineAt?: Date;
+    stats?: {
+        totalSubscriptions: number;
+        following: number;
+    };
+}, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
+    updatedAt: Date;
+    createdAt: Date;
+    verifiedEmail: boolean;
+    roles: string[];
+    status: string;
+    balance: number;
+    isOnline: number;
+    googleConnected: boolean;
+    twitterConnected: boolean;
+    name?: string;
+    email?: string;
+    firstName?: string;
+    lastName?: string;
+    avatarId?: {
+        prototype?: Types.ObjectId;
+        cacheHexString?: unknown;
+        generate?: {};
+        createFromTime?: {};
+        createFromHexString?: {};
+        createFromBase64?: {};
+        isValid?: {};
+    };
+    avatarPath?: string;
+    username?: string;
+    phone?: string;
+    gender?: string;
+    country?: string;
+    onlineAt?: Date;
+    offlineAt?: Date;
+    stats?: {
+        totalSubscriptions: number;
+        following: number;
+    };
+}>> & Omit<mongoose.FlatRecord<{
+    updatedAt: Date;
+    createdAt: Date;
+    verifiedEmail: boolean;
+    roles: string[];
+    status: string;
+    balance: number;
+    isOnline: number;
+    googleConnected: boolean;
+    twitterConnected: boolean;
+    name?: string;
+    email?: string;
+    firstName?: string;
+    lastName?: string;
+    avatarId?: {
+        prototype?: Types.ObjectId;
+        cacheHexString?: unknown;
+        generate?: {};
+        createFromTime?: {};
+        createFromHexString?: {};
+        createFromBase64?: {};
+        isValid?: {};
+    };
+    avatarPath?: string;
+    username?: string;
+    phone?: string;
+    gender?: string;
+    country?: string;
+    onlineAt?: Date;
+    offlineAt?: Date;
+    stats?: {
+        totalSubscriptions: number;
+        following: number;
+    };
+}> & {
+    _id: Types.ObjectId;
+}, never>>;
+export declare const UserSchema: mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, {
+    updatedAt: Date;
+    createdAt: Date;
+    verifiedEmail: boolean;
+    roles: string[];
+    status: string;
+    balance: number;
+    isOnline: number;
+    googleConnected: boolean;
+    twitterConnected: boolean;
+    name?: string;
+    email?: string;
+    firstName?: string;
+    lastName?: string;
+    avatarId?: {
+        prototype?: Types.ObjectId;
+        cacheHexString?: unknown;
+        generate?: {};
+        createFromTime?: {};
+        createFromHexString?: {};
+        createFromBase64?: {};
+        isValid?: {};
+    };
+    avatarPath?: string;
+    username?: string;
+    phone?: string;
+    gender?: string;
+    country?: string;
+    onlineAt?: Date;
+    offlineAt?: Date;
+    stats?: {
+        totalSubscriptions: number;
+        following: number;
+    };
+}, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
+    updatedAt: Date;
+    createdAt: Date;
+    verifiedEmail: boolean;
+    roles: string[];
+    status: string;
+    balance: number;
+    isOnline: number;
+    googleConnected: boolean;
+    twitterConnected: boolean;
+    name?: string;
+    email?: string;
+    firstName?: string;
+    lastName?: string;
+    avatarId?: {
+        prototype?: Types.ObjectId;
+        cacheHexString?: unknown;
+        generate?: {};
+        createFromTime?: {};
+        createFromHexString?: {};
+        createFromBase64?: {};
+        isValid?: {};
+    };
+    avatarPath?: string;
+    username?: string;
+    phone?: string;
+    gender?: string;
+    country?: string;
+    onlineAt?: Date;
+    offlineAt?: Date;
+    stats?: {
+        totalSubscriptions: number;
+        following: number;
+    };
+}>> & Omit<mongoose.FlatRecord<{
+    updatedAt: Date;
+    createdAt: Date;
+    verifiedEmail: boolean;
+    roles: string[];
+    status: string;
+    balance: number;
+    isOnline: number;
+    googleConnected: boolean;
+    twitterConnected: boolean;
+    name?: string;
+    email?: string;
+    firstName?: string;
+    lastName?: string;
+    avatarId?: {
+        prototype?: Types.ObjectId;
+        cacheHexString?: unknown;
+        generate?: {};
+        createFromTime?: {};
+        createFromHexString?: {};
+        createFromBase64?: {};
+        isValid?: {};
+    };
+    avatarPath?: string;
+    username?: string;
+    phone?: string;
+    gender?: string;
+    country?: string;
+    onlineAt?: Date;
+    offlineAt?: Date;
+    stats?: {
+        totalSubscriptions: number;
+        following: number;
+    };
+}> & {
+    _id: Types.ObjectId;
+}, never>>;
